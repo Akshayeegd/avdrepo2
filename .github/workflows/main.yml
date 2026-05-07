@@ -11,6 +11,51 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
     - name: print message
       run: echo "Hello, World!"
+
+  
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: print message
+      run: echo "i am job2!"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: print message
+      run: echo "i am job3!"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs: job2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: print message
+      run: echo "i am job4!"
+
+  job5:
+    runs-on: ubuntu-latest
+    needs: job3
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: print message
+      run: echo "i am job5!"
+
+  job6:
+    runs-on: ubuntu-latest
+    needs: [job4, job5]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: print message
+      run: echo "i am job6!"
